@@ -1,0 +1,41 @@
+# build artifacts
+build/
+dist/
+*.spec.bak
+
+# python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ide
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# os
+.DS_Store
+Thumbs.db
+*.tmp
+
+# pyinstaller
+*.manifest
+*.spec.bak
+
+# distribution packages
+*.zip
+*.tar.gz
+*.dmg
+*.exe
+*.app

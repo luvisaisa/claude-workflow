@@ -16,7 +16,11 @@ complete claude code setup with:
 
 gui application to copy .claude/ folder to new projects.
 
-**usage:**
+**download pre-built executables:**
+
+see [INSTALL.md](INSTALL.md) for installation instructions and downloads.
+
+**or run from source:**
 
 ```bash
 # install dependencies
@@ -34,6 +38,30 @@ python3 claude_setup.py
 - cross-platform path handling
 
 **note:** .claude is a hidden folder (starts with .). on mac, press `cmd+shift+.` in finder to show hidden files.
+
+## building distributables
+
+create standalone executables for distribution:
+
+**macos:**
+```bash
+./build-mac.sh
+# output: dist/Claude Workflow Setup.app
+```
+
+**windows (run on windows):**
+```cmd
+build-windows.bat
+REM output: dist\claude-workflow-setup.exe
+```
+
+**linux:**
+```bash
+./build-linux.sh
+# output: dist/claude-workflow-setup
+```
+
+see [INSTALL.md](INSTALL.md) for distribution and installation details.
 
 ## development
 
@@ -58,10 +86,15 @@ python3 -m pytest tests/
 │   ├── hooks/                    # automation scripts
 │   └── settings.json             # project settings
 ├── claude_setup.py               # gui setup tool
+├── claude-setup.spec             # pyinstaller spec file
+├── build-mac.sh                  # macos build script
+├── build-windows.bat             # windows build script
+├── build-linux.sh                # linux build script
 ├── requirements.txt              # python dependencies
 ├── tests/                        # test suite
 │   └── test-claude-setup.py
-└── README.md                     # this file
+├── README.md                     # this file
+└── INSTALL.md                    # installation guide
 ```
 
 ## workflows
