@@ -5,9 +5,28 @@ pyinstaller spec file for claude workflow setup tool.
 builds standalone executable for mac, windows, linux.
 """
 
+import sys
+from pathlib import Path
 from PyInstaller.utils.hooks import collect_data_files
 
 block_cipher = None
+
+# determine icon path based on platform
+if sys.platform == 'darwin':
+    # macos
+    icon_path = 'assets/icons/icon.icns'
+elif sys.platform == 'win32':
+    # windows
+    icon_path = 'assets/icons/icon.ico'
+else:
+    # linux - use png
+    icon_path = 'assets/icons/linux/icon-256.png'
+
+# verify icon exists
+if not Path(icon_path).exists():
+    print(f"warning: icon file not found: {icon_path}")
+    print("run: python3 convert-icon.py")
+    icon_path = None
 
 # collect pyside6 data files
 pyside6_datas = collect_data_files('PySide6')
@@ -54,17 +73,19 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=None,  # add icon file path here if you have one
+    icon=icon_path,  # platform-specific icon
 )
 
 # macos app bundle
 app = BUNDLE(
     exe,
     name='Claude Workflow Setup.app',
-    icon=None,
+    icon=icon_path if sys.platform == 'darwin' else None,
     bundle_identifier='com.claude-code.workflow-setup',
     info_plist={
         'NSHighResolutionCapable': 'True',
         'LSMinimumSystemVersion': '10.13.0',
+        'CFBundleShortVersionString': '1.0.0',
+        'CFBundleVersion': '1.0.0',
     },
 )

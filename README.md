@@ -45,19 +45,19 @@ create standalone executables for distribution:
 
 **macos:**
 ```bash
-./build-mac.sh
+./scripts/build-mac.sh
 # output: dist/Claude Workflow Setup.app
 ```
 
 **windows (run on windows):**
 ```cmd
-build-windows.bat
+scripts\build-windows.bat
 REM output: dist\claude-workflow-setup.exe
 ```
 
 **linux:**
 ```bash
-./build-linux.sh
+./scripts/build-linux.sh
 # output: dist/claude-workflow-setup
 ```
 
@@ -80,21 +80,31 @@ python3 -m pytest tests/
 
 ```
 .
-├── .claude/                      # workflow automation
+├── .claude/                      # workflow automation (distributed)
 │   ├── commands/                 # 31 slash commands
 │   ├── skills/                   # pydev-workflow, pydev-feature
 │   ├── hooks/                    # automation scripts
 │   └── settings.json             # project settings
-├── claude_setup.py               # gui setup tool
-├── claude-setup.spec             # pyinstaller spec file
-├── build-mac.sh                  # macos build script
-├── build-windows.bat             # windows build script
-├── build-linux.sh                # linux build script
-├── requirements.txt              # python dependencies
+├── assets/                       # source assets
+│   ├── DEV-WF-ICON.png          # source icon
+│   └── icons/                    # generated platform icons
+├── docs/                         # source documentation
+│   ├── claude-commands/          # slash command sources
+│   └── pydev-workflow/           # workflow documentation
+├── scripts/                      # build and utility scripts
+│   ├── build-mac.sh             # macos build script
+│   ├── build-windows.bat        # windows build script
+│   ├── build-linux.sh           # linux build script
+│   └── convert-icon.py          # icon converter
 ├── tests/                        # test suite
 │   └── test-claude-setup.py
+├── claude_setup.py               # gui setup tool
+├── claude-setup.spec             # pyinstaller spec file
+├── requirements.txt              # python dependencies
+├── version.txt                   # version number
 ├── README.md                     # this file
-└── INSTALL.md                    # installation guide
+├── INSTALL.md                    # installation guide
+└── CLAUDE.md                     # operating instructions
 ```
 
 ## workflows

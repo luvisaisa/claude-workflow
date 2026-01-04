@@ -26,8 +26,15 @@ __pycache__/
 
 # os
 .DS_Store
+**/.DS_Store
 Thumbs.db
 *.tmp
+
+# cache
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
 
 # pyinstaller
 *.manifest

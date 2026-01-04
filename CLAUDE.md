@@ -208,6 +208,69 @@ Fix trivial lint warnings. Flag if fixing changes logic.
 
 ---
 
+## Project Organization
+
+**Keep the root directory clean.** Only essential project files belong at the top level.
+
+### Root-Level Files (Allowed)
+
+These are the *only* files that should typically exist in the project root:
+
+- **Core documentation:** `README.md`, `CLAUDE.md`, `INSTALL.md`, `LICENSE`
+- **Configuration files:** `.gitignore`, `.env.example`, `pyproject.toml`, `package.json`, `tsconfig.json`, `docker-compose.yml`
+- **Build/deploy scripts:** `Makefile`, `Dockerfile`, build scripts if they orchestrate the entire project
+- **Version control:** `.git/` directory
+
+### Everything Else Goes Into Folders
+
+Organize files into logical, nested folder structures:
+
+```
+src/              # source code
+├── api/          # API routes/endpoints
+├── models/       # data models
+├── services/     # business logic
+└── utils/        # shared utilities
+
+tests/            # all test files
+docs/             # extended documentation
+scripts/          # utility/maintenance scripts
+config/           # configuration files
+migrations/       # database migrations
+assets/           # static assets (images, fonts, etc.)
+```
+
+### Rules for File Placement
+
+1. **No orphaned files** — if you're creating a new file, determine its proper folder first
+2. **Create folders as needed** — if no appropriate folder exists, create one with a clear name
+3. **Group by function, not type** — prefer `features/auth/` over scattering auth files across `controllers/`, `services/`, `models/`
+4. **Depth is acceptable** — `src/features/auth/api/handlers/` is better than a cluttered `src/`
+5. **Document structure** — if folder structure is non-obvious, add a brief structure comment to README
+
+### When Creating New Files
+
+**Always ask yourself:**
+- What category does this file belong to?
+- Is there an existing folder for this type of file?
+- If not, what folder should I create?
+
+**Never:**
+- Drop temporary files, test outputs, or experiments in the root
+- Leave build artifacts or generated files uncommitted in the root
+- Create files "just for now" without proper placement
+
+### Refactoring Messy Projects
+
+If you inherit or create a messy root directory:
+1. Identify file categories
+2. Propose folder structure
+3. Move files in groups (same category together)
+4. Update imports/references
+5. Commit with message: `chore: reorganize project structure`
+
+---
+
 ## Task Patterns
 
 ### Build / Create
