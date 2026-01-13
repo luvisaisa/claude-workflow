@@ -23,9 +23,9 @@ else:
     icon_path = None
 
 # verify icon exists
-if not Path(icon_path).exists():
+if icon_path and not Path(icon_path).exists():
     print(f"warning: icon file not found: {icon_path}")
-    print("run: python3 convert-icon.py")
+    print("run: python3 scripts/convert-icon.py")
     icon_path = None
 
 # collect pyside6 data files
