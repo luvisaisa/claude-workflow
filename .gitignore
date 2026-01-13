@@ -46,3 +46,7 @@ __pycache__/
 *.dmg
 *.exe
 *.app
+
+# user-specific .claude configuration
+.claude/git-config
+.claude/settings.local.json

@@ -1,0 +1,6 @@
+#!/bin/bash
+# git configuration - copy this file to git-config and set your credentials
+# this file is automatically loaded by session-setup.sh hook
+
+GIT_USER_EMAIL="your.email@example.com"
+GIT_USER_NAME="your-username"

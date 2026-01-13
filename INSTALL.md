@@ -41,7 +41,7 @@ copies the `.claude/` folder to your project directories.
 
 the `.claude/` folder contains:
 - **31 slash commands** - organized development tasks
-- **2 ai skills** - pydev-workflow (12-step project) and pydev-feature (6-step feature)
+- **3 ai skills** - pydev-workflow (12-step project), pydev-feature (6-step feature), project-audit (codebase analysis)
 - **automation hooks** - auto-formatting python code, git config
 - **project settings** - pre-configured for python projects
 
@@ -63,6 +63,55 @@ the `.claude/` folder contains:
 - **macos**: press `cmd + shift + .` in finder
 - **windows**: view tab → show → hidden items
 - **linux**: press `ctrl + h` in file manager
+
+---
+
+## post-installation setup
+
+### configure git credentials (recommended)
+
+the workflow includes automatic git configuration. to set your credentials:
+
+1. **navigate to the .claude folder** in your project
+2. **copy the example config**:
+   ```bash
+   cd your-project/.claude
+   cp git-config.example git-config
+   ```
+3. **edit git-config** with your information:
+   ```bash
+   # open in your editor
+   nano git-config
+   # or
+   code git-config
+   ```
+4. **set your credentials**:
+   ```bash
+   GIT_USER_EMAIL="your.email@example.com"
+   GIT_USER_NAME="your-username"
+   ```
+5. **save the file**
+
+the `session-setup.sh` hook will automatically configure git in your project using these credentials.
+
+**note**: `git-config` is gitignored by default, so your credentials stay private.
+
+### verify setup
+
+check that everything is working:
+
+```bash
+# view the .claude folder contents
+ls -la your-project/.claude
+
+# should see:
+# - commands/ (31 command files)
+# - skills/ (3 skills: pydev-workflow, pydev-feature, project-audit)
+# - hooks/ (format-python.sh, session-setup.sh)
+# - settings.json
+# - git-config.example
+# - QUICKSTART.md
+```
 
 ---
 
@@ -267,7 +316,8 @@ your-project/
     │   └── quick-fixes/
     ├── skills/                # ai workflow skills
     │   ├── pydev-workflow/    # 12-step project development
-    │   └── pydev-feature/     # 6-step feature implementation
+    │   ├── pydev-feature/     # 6-step feature implementation
+    │   └── project-audit/     # codebase analysis and health assessment
     ├── hooks/                 # automation scripts
     │   ├── format-python.sh   # auto-format python files
     │   └── session-setup.sh   # auto-configure git

@@ -28,7 +28,7 @@
 | Command | Description |
 |---------|-------------|
 | `CHECKPOINT` | Force progress checkpoint — summarize state and await confirmation |
-| `COMPACT` | Compress context by summarizing completed work |
+| `SESSION-HANDOFF` | Create session handoff summary with files changed, decisions, and next steps |
 | `VERIFY` | Run full verification suite (tests, types, lint) and report |
 
 ### scaffolding/

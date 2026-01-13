@@ -1,3 +1,9 @@
+---
+description: show all available commands organized by category
+allowed-tools: Read, Grep, Glob
+argument-hint: none
+---
+
 # Help
 
 List all available commands with descriptions.
@@ -8,10 +14,10 @@ List all available commands with descriptions.
 [Help] Available Commands
 
 ## Core Workflow
-  /checkpoint    — Force progress checkpoint, summarize state
-  /compact       — Compress context by summarizing completed work
-  /verify        — Run full verification suite and report
-  /help          — Show this help message
+  /checkpoint       — Force progress checkpoint, summarize state
+  /session-handoff  — Create session handoff summary with context
+  /verify           — Run full verification suite and report
+  /help             — Show this help message
 
 ## Scaffolding
   /new-adapter   — Create adapter for external service

@@ -177,7 +177,7 @@ class ClaudeSetupWindow(QMainWindow):
             "to a new or existing project directory.\n\n"
             "the .claude/ folder contains:\n"
             "• 31 slash commands for development tasks\n"
-            "• pydev-workflow and pydev-feature skills\n"
+            "• 3 ai skills (pydev-workflow, pydev-feature, project-audit)\n"
             "• automation hooks for formatting and git setup\n"
             "• project settings"
         )
@@ -336,7 +336,7 @@ class ClaudeSetupWindow(QMainWindow):
                     f"copied {file_count} files\n\n"
                     f"your project now has:\n"
                     f"• 31 slash commands\n"
-                    f"• pydev-workflow and pydev-feature skills\n"
+                    f"• 3 ai skills (pydev-workflow, pydev-feature, project-audit)\n"
                     f"• automation hooks for formatting and git setup\n\n"
                     f"note: .claude is a hidden folder\n"
                     f"press cmd+shift+. in finder to view hidden files"
@@ -353,6 +353,7 @@ class ClaudeSetupWindow(QMainWindow):
                     f"claude workflow setup complete!\n\n"
                     f".claude/ folder copied to:\n{target}\n\n"
                     f"copied {file_count} files\n\n"
+                    f"includes: 31 commands, 3 skills, automation hooks\n\n"
                     f"note: .claude is a HIDDEN folder (starts with .)\n"
                     f"in finder: press cmd+shift+. to show hidden files"
                 )

@@ -8,7 +8,7 @@ collection of development workflow automation tools for claude code.
 
 complete claude code setup with:
 - **31 slash commands** - organized development tasks
-- **2 skills** - pydev-workflow (12-step project) and pydev-feature (6-step feature)
+- **3 skills** - pydev-workflow (12-step project), pydev-feature (6-step feature), project-audit (codebase analysis)
 - **automation hooks** - auto-formatting, git config
 - **project settings** - pre-configured for python projects
 
@@ -112,6 +112,7 @@ python3 -m pytest tests/
 see `.claude/skills/` for detailed workflow documentation:
 - **pydev-workflow** - 12-step project development (init → deployment)
 - **pydev-feature** - 6-step feature implementation (analysis → cleanup)
+- **project-audit** - comprehensive codebase analysis and health assessment
 
 ## license
 

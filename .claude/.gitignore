@@ -1,0 +1,19 @@
+# user-specific configuration
+git-config
+settings.local.json
+
+# python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+
+# temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# logs
+*.log
