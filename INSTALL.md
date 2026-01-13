@@ -6,32 +6,26 @@ installation instructions for mac, windows, and linux.
 
 ## quick start
 
-### download
+### download and install
 
-download the appropriate version for your operating system:
+**macos (pre-built app):**
+1. download `claude-workflow-setup-macos.zip` from releases
+2. extract the zip file
+3. drag `Claude Workflow Setup.app` to your applications folder (optional)
+4. double-click to run
+5. if macos blocks it: right-click → open → confirm
 
-- **macos**: `claude-workflow-setup-macos.zip`
-- **windows**: `claude-workflow-setup-windows.zip`
-- **linux**: `claude-workflow-setup-linux.tar.gz`
-
-### install
-
-**macos:**
-1. extract `claude-workflow-setup-macos.zip`
-2. drag `Claude Workflow Setup.app` to your applications folder (optional)
-3. double-click to run
-4. if macos blocks it: right-click → open → confirm
-
-**windows:**
-1. extract `claude-workflow-setup-windows.zip`
-2. double-click `claude-workflow-setup.exe`
-3. if windows smartscreen appears: click "more info" → "run anyway"
-
-**linux:**
-1. extract: `tar -xzf claude-workflow-setup-linux.tar.gz`
-2. make executable: `chmod +x claude-workflow-setup`
-3. run: `./claude-workflow-setup`
-4. if qt errors occur, install dependencies (see troubleshooting below)
+**windows and linux (run from source):**
+1. download or clone the repository
+2. install python 3.9+ if not already installed
+3. install dependencies:
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+4. run the setup tool:
+   ```bash
+   python3 claude_setup.py
+   ```
 
 ---
 
@@ -145,130 +139,69 @@ solution:
 1. click "more info"
 2. click "run anyway"
 
-**antivirus blocking the executable**
+**python not found (windows/linux)**
 
 solution:
-- temporarily disable antivirus
-- or add `claude-workflow-setup.exe` to whitelist
-- this is a false positive - pyinstaller executables are often flagged
+- install python 3.9+ from https://www.python.org/downloads/
+- on windows, check "add python to PATH" during installation
+- verify: `python3 --version` or `python --version`
 
-### linux
-
-**"error while loading shared libraries: libxcb-xinerama.so.0"**
-
-solution (ubuntu/debian):
-```bash
-sudo apt install libxcb-xinerama0 libxcb-cursor0
-```
-
-solution (fedora):
-```bash
-sudo dnf install xcb-util-wm xcb-util-cursor
-```
-
-solution (arch):
-```bash
-sudo pacman -S libxcb
-```
-
-**"qt.qpa.plugin: could not load the qt platform plugin"**
+**pip not found (windows/linux)**
 
 solution:
-```bash
-export QT_QPA_PLATFORM=xcb
-./claude-workflow-setup
-```
+- usually installed with python
+- on linux: `sudo apt install python3-pip` (ubuntu/debian)
+- verify: `pip3 --version`
 
-**permission denied**
+**pyside6 installation fails (windows/linux)**
 
 solution:
-```bash
-chmod +x claude-workflow-setup
-./claude-workflow-setup
-```
+- ensure you have latest pip: `pip3 install --upgrade pip`
+- on linux, you may need: `sudo apt install python3-dev`
+- retry: `pip3 install -r requirements.txt`
 
 ---
 
-## building from source
+## building macos app from source
 
-if you prefer to build the executable yourself:
+if you want to build the macos app yourself:
 
 ### prerequisites
 
-- python 3.9 or later
+- macos 10.13+
+- python 3.9+
 - git (optional)
 
-### macos build
+### build steps
 
 ```bash
 # clone or download source
-git clone <repository-url>
-cd scripts
+git clone https://github.com/luvisaisa/claude-workflow.git
+cd claude-workflow
 
 # run build script
-chmod +x build-mac.sh
-./build-mac.sh
+chmod +x scripts/build-mac.sh
+./scripts/build-mac.sh
 
 # output: dist/Claude Workflow Setup.app
-```
 
-### windows build
-
-```cmd
-REM clone or download source
-git clone <repository-url>
-cd scripts
-
-REM run build script
-build-windows.bat
-
-REM output: dist\claude-workflow-setup.exe
-```
-
-### linux build
-
-```bash
-# clone or download source
-git clone <repository-url>
-cd scripts
-
-# run build script
-chmod +x build-linux.sh
-./build-linux.sh
-
-# output: dist/claude-workflow-setup
-```
-
----
-
-## running from source (no build)
-
-if you don't want to create an executable:
-
-```bash
-# install dependencies
-pip3 install -r requirements.txt
-
-# run directly
-python3 claude_setup.py
+# create distributable zip
+cd dist
+zip -r claude-workflow-setup-macos.zip "Claude Workflow Setup.app"
 ```
 
 ---
 
 ## system requirements
 
-### macos
+### macos (pre-built app)
 - macos 10.13 (high sierra) or later
 - 100 mb disk space
 
-### windows
-- windows 7 or later (64-bit)
-- 100 mb disk space
-
-### linux
-- 64-bit linux distribution
-- qt6 libraries (usually pre-installed)
-- 100 mb disk space
+### windows and linux (python script)
+- python 3.9 or later
+- pip (python package installer)
+- 50 mb disk space for dependencies
 
 ---
 
@@ -277,11 +210,9 @@ python3 claude_setup.py
 ### macos
 - delete `Claude Workflow Setup.app` from applications
 
-### windows
-- delete `claude-workflow-setup.exe`
-
-### linux
-- delete `claude-workflow-setup` executable
+### windows and linux
+- delete the cloned repository folder
+- optionally uninstall dependencies: `pip3 uninstall PySide6`
 
 **note:** this does not affect any .claude/ folders you've copied to projects.
 
