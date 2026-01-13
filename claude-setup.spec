@@ -31,11 +31,15 @@ if icon_path and not Path(icon_path).exists():
 # collect pyside6 data files
 pyside6_datas = collect_data_files('PySide6')
 
+# include .claude/ folder in the bundle
+# (source, destination_in_bundle)
+claude_datas = [('.claude', '.claude')]
+
 a = Analysis(
     ['claude_setup.py'],
     pathex=[],
     binaries=[],
-    datas=pyside6_datas,
+    datas=pyside6_datas + claude_datas,
     hiddenimports=[
         'PySide6.QtCore',
         'PySide6.QtGui',

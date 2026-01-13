@@ -34,9 +34,15 @@ def get_source_claude_dir() -> Path:
     raises:
         FileNotFoundError: if .claude/ folder not found
     """
-    # locate .claude/ folder in same directory as this script
-    script_dir = Path(__file__).parent
-    claude_dir = script_dir / ".claude"
+    # when running as pyinstaller bundle, use the extracted temp directory
+    if getattr(sys, 'frozen', False):
+        # running as bundled executable
+        bundle_dir = Path(sys._MEIPASS)
+        claude_dir = bundle_dir / ".claude"
+    else:
+        # running as normal python script
+        script_dir = Path(__file__).parent
+        claude_dir = script_dir / ".claude"
 
     if not claude_dir.exists():
         raise FileNotFoundError(
