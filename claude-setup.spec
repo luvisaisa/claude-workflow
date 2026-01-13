@@ -14,13 +14,13 @@ block_cipher = None
 # determine icon path based on platform
 if sys.platform == 'darwin':
     # macos
-    icon_path = 'assets/icons/icon.icns'
+    icon_path = 'assets/icons/DEV-WF-ICON.icns'
 elif sys.platform == 'win32':
-    # windows
-    icon_path = 'assets/icons/icon.ico'
+    # windows (not built)
+    icon_path = None
 else:
-    # linux - use png
-    icon_path = 'assets/icons/linux/icon-256.png'
+    # linux (not built)
+    icon_path = None
 
 # verify icon exists
 if not Path(icon_path).exists():
